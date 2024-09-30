@@ -19,7 +19,7 @@ const itemSlice = createSlice({
             state.loading = false,
             state.items.push(action.payload)
         }).addCase("items/addItems/rejected", (state, action) => {
-            state.error = action.error.massage;
+            state.error = action.error.message;
         });
       },
 })
