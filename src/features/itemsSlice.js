@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialSlice = {
+const initialState = {
     items: [],
     loading: false,
     error: null,
@@ -17,7 +17,11 @@ const itemSlice = createSlice({
             state.loading = true
         }).addCase("items/addItems/fulfilled", (state, action) => {
             state.loading = false,
-            state.items.push()
-        })
-      }
+            state.items.push(action.payload)
+        }).addCase("items/addItems/rejected", (state, action) => {
+            state.error = action.error.massage;
+        });
+      },
 })
+
+export default itemSlice.reducer
