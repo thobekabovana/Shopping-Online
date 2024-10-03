@@ -15,11 +15,18 @@ const shoppingSlice = createSlice({
           return { ...state, shoppings: [...state.shoppings, action.payload] };
         },
         deleteShopping: (state, action) => {
-            const shoppingToDelete = state.shoppings.find(shopping => shopping.id === action.payload);
-            console.log(shoppingToDelete);
-            state.shoppings = state.shoppings.filter(shopping => shopping.id !== action.payload);
+            const index = state.shoppings.findIndex(shopping => shopping.id === action.payload);
+            if (index !== -1) {
+                state.shoppings.splice(index, 1);
+            }
+        },
+        updateShopping: (state, action) => {
+            const index = state.shoppings.findIndex(shopping => shopping.id === action.payload.id);
+            if (index !== -1) {
+                state.shoppings.splice(index, 1);
+            }
         }
-      }
+    }
 })
  
 export default shoppingSlice.reducer;
