@@ -5,6 +5,7 @@ import Layout from './Components/Layout';
 import { LogIn } from './Pages/LogIn';
 import LandingPage from './Pages/Landing.pg';
 import { Registor } from './Pages/Registor';
+import Home from './Pages/Home';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
             <Route index element={<LandingPage />} />
             <Route path="/sign-up" element={<Registor />} />
             <Route path="/log-in" element={<LogIn />} />
-            {/* <Route path="/home" element={<Todo />} /> */}
+            <Route path="/home" element={<Home />} />
           </Route>
         </Routes>
         </div>
