@@ -1,8 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import itemsSlice from "./src/features/itemsSlice";
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import registerReducer from './registerSlice';
 
-export default configureStore({
-    reducer: {
-        items: itemsSlice
-    }
-})
+export const store = configureStore({
+  reducer: {
+    register: registerReducer,
+  },
+});

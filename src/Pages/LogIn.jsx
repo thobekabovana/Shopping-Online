@@ -13,7 +13,7 @@ export function LogIn() {
 
     return(
         <>
-        <form style={{backgroundColor: "#4A5A60", height: "90vh"}}>
+        <form style={{backgroundColor: "aliceblue", height: "90vh"}}>
         <div>
 
             <div>

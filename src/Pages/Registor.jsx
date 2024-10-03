@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-
+import background from '../assets/images/depositphotos_8101179-stock-photo-human-hand-holding-futuristic-business.jpg'
 
 import { Link } from "react-router-dom";
 import '../index.css'
@@ -13,12 +13,10 @@ export function Registor() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
- 
-
-
+  
     return(
         <>
-        <form style={{backgroundColor: "#4A5A60", height: "90vh"}} >
+        <form style={{backgroundColor: "aliceblue", height: "90vh"}} >
         <div >
 
             
