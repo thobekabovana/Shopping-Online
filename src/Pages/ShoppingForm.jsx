@@ -6,19 +6,23 @@ export default function ShoppingForm() {
 
     const dispatch = useDispatch()
     const[shoppingItem, setShoppingItem] = useState('');
-    const [qality, setQality] = useState('')
-    const [discription, setDiscription] = useState('')
+    const [quality, setQuality] = useState('')
+    const [description, setDescription] = useState('')
    
     const handleAddShopping = () => {
         let shopping = {
             shoppingItem: shoppingItem,
-            qality : qality,
-            discription: discription
-           }
-       dispatch(addShopping(shopping))
-       setShoppingItem('')
-       console.log(shoppingItem, qality, discription)
+            quality: quality,
+            description: description
+        }
+        dispatch(addShopping(shopping))
+        setShoppingItem('')
+        setQuality('')
+        setDescription('')
+        // console.log(shopping)
     }
+   
+   
 
   return (
     <>
@@ -33,12 +37,12 @@ export default function ShoppingForm() {
 
       <input type='text'
              placeholder='Qality'
-             onChange={(e) => setQality(e.target.value)}
+             onChange={(e) => setQuality(e.target.value)}
         />
 
       <input type='text'
              placeholder='Discription'
-             onChange={(e) => setDiscription(e.target.value)}
+             onChange={(e) => setDescription(e.target.value)}
         />
 
       <button onClick={handleAddShopping}>Add</button>
@@ -47,3 +51,4 @@ export default function ShoppingForm() {
     </>
   )
 }
+
