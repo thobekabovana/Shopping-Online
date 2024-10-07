@@ -1,20 +1,39 @@
 import React from 'react'
-import pic from '../assets/images/male-shopaholic-flat-color-vector-faceless-character-shopping-addiction-compulsive-goods-purchasing-visiting-shopping-mall-isolated-cartoon-illustration-web-graphic-design-animation_151150-5607.avif'
+import pic from '../assets/images/man-relaxing-barefoot-on-couch-260nw-1813016101.webp'
 
 export default function LandingPage() {
+
+  
+    const carvedButtonStyle = {
+        backgroundColor: '#EC5649',
+        color: 'white',
+        border: 'none',
+        padding: '10px 20px',
+        fontSize: '16px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        boxShadow: 'inset 0 2px 5px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(0, 0, 0, 0.2)',
+        transition: 'transform 0.1s ease-in-out',
+    };
 
   return (
     <>
 
 <main style={{ display: 'flex', 
-               alignItems: 'center', 
-               height: '100vh' }}>
+               height: '100vh',
+               marginTop: "10%" }}>
   
-    <aside style={{ flex: 1, 
+    <aside style={{ 
+                    // flex: 1, 
                     textAlign: 'left', 
-                    paddingLeft: '5%' }}>
+                    paddingLeft: '5%',
+                    marginLeft: '5%',
+                    justifyContent: "space-around" }}>
 
-        <h1>Welcome <br /> To Our <br /> Online Shopping!</h1>
+        <h1>Welcome To<br/>Our Online<br />Shopping!</h1>
+        <p>Our online shopping platform offers<br />  a wide variety of products,<br />  including electronics, clothing</p>
+        <button style={carvedButtonStyle} >Free Download</button>
+
 
     </aside>
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../App/LogInSlice';
 import { useNavigate, Link } from 'react-router-dom';
-;
+import pic from '../assets/images/clv143796700.jpg'
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,11 @@ const LogIn = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+    <>
+    <main style={{ 
+               height: '100vh',
+              }}>
+      <aside>
       <form onSubmit={handleSubmit}>
         <h2 className="text-xl font-bold mb-4">Login</h2>
 
@@ -69,13 +73,21 @@ const LogIn = () => {
           Login
         </button>
       </form>
+      </aside>
 
+<aside>
       <div className="mt-4 text-center">
         <p className="text-gray-600">
           Don't have an account? <Link to="/sign-up" className="text-blue-500 hover:underline">Register here</Link>.
         </p>
       </div>
-    </div>
+      <div>
+        <img src={pic} alt="pic"
+              style={{marginLeft: "50%"}} />
+      </div>
+      </aside>
+    </main>
+    </>
   );
 };
 export default LogIn;
