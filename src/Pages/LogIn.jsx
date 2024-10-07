@@ -1,57 +1,81 @@
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../App/LogInSlice';
+import { useNavigate, Link } from 'react-router-dom';
+;
 
-import { Link } from "react-router-dom";
-import '../index.css'
-
-export function LogIn() {
+const LogIn = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const foundUser = await dispatch(loginUser({ email, password })).unwrap();
+      navigate('/add'); // Navigate to add list page if login is successful
+    } catch (error) {
+      // Check if the error corresponds to invalid credentials
+      if (error.message.includes("Invalid credentials")) {
+        alert("Invalid credentials. Please try again."); // Show alert for invalid login details
+      } else {
+        alert("Login failed. Please try again."); // General error alert
+      }
+    }
+  };
 
-    return(
-        <>
-        <form style={{backgroundColor: "aliceblue", height: "90vh"}}>
-        <div>
+  return (
+    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+      <form onSubmit={handleSubmit}>
+        <h2 className="text-xl font-bold mb-4">Login</h2>
 
-            <div>
-
-          <h1>Log In</h1>
-
-        <div className="input-container">
-
-              <div className="input-field">
-                <input type="text" 
-                       placeholder="Email"  
-                       value={email} 
-                       onChange={(e) => setEmail(e.target.value)}
-               />
-             </div>
-
-             <div className="input-field">
-                <input type="text" 
-                      placeholder="Password"  
-                      value={password} 
-                      onChange={(e) => setPassword(e.target.value)}
-                />
-             </div>
-
+        <div className="mb-4">
+          <label className="block text-gray-700">Email:</label>
+          <div className="relative">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+              <FontAwesomeIcon icon={faEnvelope} />
+            </span>
+            <input
+              type="email"
+              className="mt-1 block w-full pl-10 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
         </div>
 
-             <div className="button-container">
-                <button className="button" type="submit">Log In</button>
-             </div>
-
-             <div className="link-container">
-                <br></br>
-                   <p className="link">Don't have an account? <Link to="/Sign-up">Sign In here</Link></p>
-            </div>
-            </div>
-
+        <div className="mb-4">
+          <label className="block text-gray-700">Password:</label>
+          <div className="relative">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+              <FontAwesomeIcon icon={faLock} />
+            </span>
+            <input
+              type="password"
+              className="mt-1 block w-full pl-10 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
         </div>
-        </form>
-        </>
-    )
-}
+
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600 transition duration-200"
+        >
+          Login
+        </button>
+      </form>
+
+      <div className="mt-4 text-center">
+        <p className="text-gray-600">
+          Don't have an account? <Link to="/register" className="text-blue-500 hover:underline">Register here</Link>.
+        </p>
+      </div>
+    </div>
+  );
+};
+export default LogIn;

@@ -23,8 +23,9 @@ const shoppingSlice = createSlice({
         updateShopping: (state, action) => {
             const index = state.shoppings.findIndex(shopping => shopping.id === action.payload.id);
             if (index !== -1) {
-                state.shoppings.splice(index, 1);
+                return { ...state, shoppings: [...state.shoppings.slice(0, index), action.payload, ...state.shoppings.slice(index + 1)] };
             }
+            return state;
         }
     }
 })

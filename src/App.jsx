@@ -2,9 +2,9 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './Components/Layout';
-import { LogIn } from './Pages/LogIn';
+import LogIn from './Pages/LogIn';
 import LandingPage from './Pages/Landing.pg';
-import { Registor } from './Pages/Registor';
+import Register from './Pages/Registor';
 import Home from './Pages/Home';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout/>}>
             <Route index element={<LandingPage />} />
-            <Route path="/sign-up" element={<Registor />} />
+            <Route path="/sign-up" element={<Register />} />
             <Route path="/log-in" element={<LogIn />} />
             <Route path="/home" element={<Home />} />
           </Route>
