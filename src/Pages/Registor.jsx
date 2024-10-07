@@ -21,7 +21,7 @@ const Register = () => {
     try {
       await dispatch(registerUser(newUser)).unwrap();
       window.alert('Registration successful! Please log in.');
-      navigate('/login');
+      navigate('/log-in');
     } catch (error) {
       console.error('Failed to register:', error);
       window.alert('Registration failed. Please try again.');
@@ -39,7 +39,7 @@ const Register = () => {
           <div className="relative">
 
             <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-              <FontAwesomeIcon icon={faEnvelope} />
+              
             </span>
 
             <input
@@ -58,7 +58,7 @@ const Register = () => {
           <div className="relative">
 
             <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-              <FontAwesomeIcon icon={faLock} />
+               
             </span>
 
             <input
@@ -76,7 +76,7 @@ const Register = () => {
           <div className="relative">
 
             <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-              <FontAwesomeIcon icon={faLock} />
+            
             </span>
 
             <input
@@ -101,7 +101,7 @@ const Register = () => {
       <div className="mt-4 text-center">
         <p className="text-gray-600">
           Already have an account?
-          <Link to="/login" className="text-blue-500 hover:underline"> Login here</Link>.
+          <Link to="/log-in" className="text-blue-500 hover:underline"> Login here</Link>.
         </p>
       </div>
     </div>

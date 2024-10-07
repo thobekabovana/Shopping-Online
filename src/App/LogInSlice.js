@@ -8,7 +8,7 @@ const initialState = {
 };
 // Async thunk for registering a user
 export const registerUser = createAsyncThunk('users/registerUser', async (newUser) => {
-  const response = await fetch('http://localhost:5000/users', {
+  const response = await fetch('http://localhost:3000/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export const registerUser = createAsyncThunk('users/registerUser', async (newUse
 });
 // Async thunk for logging in a user
 export const loginUser = createAsyncThunk('users/loginUser', async ({ email, password }) => {
-  const response = await fetch('http://localhost:5000/users');
+  const response = await fetch('http://localhost:3000/users');
   const users = await response.json();
   const foundUser = users.find(user => user.email === email && user.password === password);
   if (!foundUser) {

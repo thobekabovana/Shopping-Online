@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { registerUser, registerError } from '../App/userAction'
 
-export function Create() {
+export function ShoppingForm() {
 
 
 const userState = useSelector(state => state.user);

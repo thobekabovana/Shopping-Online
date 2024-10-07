@@ -1,1 +1,19 @@
-{"items": [{"items": "Apples"}]}
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "thobekabovana@gmail.com",
+      "password": "Thobeka123#"
+    },
+    {
+      "id": "1a52",
+      "email": "thandekambili@gmail.com",
+      "password": "Thandeka123#"
+    },
+    {
+      "id": "e414",
+      "email": "deliwe@gmail.com",
+      "password": "Deliwe123@"
+    }
+  ]
+}

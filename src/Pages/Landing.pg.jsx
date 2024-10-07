@@ -1,5 +1,4 @@
 import React from 'react'
-import backgroundImage from '../assets/images/depositphotos_8101179-stock-photo-human-hand-holding-futuristic-business.jpg'
 
 
 export default function LandingPage() {
@@ -7,12 +6,7 @@ export default function LandingPage() {
   return (
     <>
 
-      <main style={{
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      height: "120vh"
-    }}>
+      <main>
         
         <section style={{
             display: "flex",
