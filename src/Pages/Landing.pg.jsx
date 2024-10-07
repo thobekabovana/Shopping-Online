@@ -1,32 +1,36 @@
 import React from 'react'
-
+import pic from '../assets/images/male-shopaholic-flat-color-vector-faceless-character-shopping-addiction-compulsive-goods-purchasing-visiting-shopping-mall-isolated-cartoon-illustration-web-graphic-design-animation_151150-5607.avif'
 
 export default function LandingPage() {
 
   return (
     <>
 
-      <main>
-        
-        <section style={{
-            display: "flex",
-            flexDirection: "column",
-            position: "absolute",
-            left: "25%",
-            top: "45%",
-            // transform: "translate(-40%, -30%)",
-        }}>
-            <h1 style={{
-              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", 
-              fontSize: "48px",
-            }}>Welcome to Our <br></br> Oline Shopping</h1>
+<main style={{ display: 'flex', 
+               alignItems: 'center', 
+               height: '100vh' }}>
+  
+    <aside style={{ flex: 1, 
+                    textAlign: 'left', 
+                    paddingLeft: '5%' }}>
 
-            <h2 style={{
-               fontSize: "20px"
-            }}>Make yourself an easy Shopping and, <br></br> save your time for more important thinggs </h2>
+        <h1>Welcome <br /> To Our <br /> Online Shopping!</h1>
 
-        </section>
-      </main>
+    </aside>
+
+    <aside style={{ flex: 1, 
+           textAlign: 'right', 
+           paddingRight: '5%' }}>
+        <div>
+            <img src={pic} alt="pic" 
+                 style={{ marginTop: "7%", 
+                          maxWidth: "100%", 
+                          height: "auto",
+                          marginRight: "10%"}} />
+        </div>
+    </aside>
+</main>
+
     </>
   )
 }
