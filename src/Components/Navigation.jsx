@@ -1,30 +1,26 @@
-import React from 'react'
-import { Outlet, Link } from "react-router-dom";
-import image from '../assets/images/360_F_332316530_ofa4oQA3ZGWxd4tRLDqKuADfy2hnpWuU.jpg'
-
-export default function Navigation() {
-
-  return (
-    <>
-     <nav>
-
-     <ul>
-            
-       <div >
-           
-            <nav>
+import React from 'react';
  
-            <img src={image} alt="Logo" style={{ width: "3%",}}></img>
 
-            <Link to="/log-in" style={{ fontSize: "20px", color: "black", marginLeft: "85%",}}>LogIn</Link>
-        
-            <Link to="/sign-up" style={{fontSize: "20px",  color: "black",marginLeft: "3%",}}>SignUp</Link>
-            </nav>
-            </div>
-          
-        </ul>
+const Navigation = () => {
+  return (
+    <nav className="bg-gray-800 p-4">
+      <ul className="flex justify-between items-center">
+      
+        <li className="mr-auto">
+          <a href="/" className="text-white flex items-center"> 
+            Home
+          </a>
+        </li>
 
-    </nav> 
-    </>
-  )
-}
+        <div className="flex space-x-4">
+          <li><a href="/login" className="text-white">Login</a></li>
+          <li><a href="/register" className="text-white">Register</a></li>
+          {/* <li><a href="/add" className="text-white">Add List</a></li> */}
+          <li><a href="/all" className="text-white">View All Lists</a></li>
+        </div>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navigation;

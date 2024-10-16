@@ -1,14 +1,16 @@
 // src/features/loginSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
 const initialState = {
   users: [],
   currentUser: null,
   status: 'idle',
   error: null,
 };
+
 // Async thunk for registering a user
 export const registerUser = createAsyncThunk('users/registerUser', async (newUser) => {
-  const response = await fetch('http://localhost:3000/users', {
+  const response = await fetch('http://localhost:5000/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,22 +22,24 @@ export const registerUser = createAsyncThunk('users/registerUser', async (newUse
   }
   return response.json();
 });
-// Async thunk for logging in a user
+
 export const loginUser = createAsyncThunk('users/loginUser', async ({ email, password }) => {
-  const response = await fetch('http://localhost:3000/users');
+  const response = await fetch('http://localhost:5000/users');
   const users = await response.json();
   const foundUser = users.find(user => user.email === email && user.password === password);
+
   if (!foundUser) {
     throw new Error('Invalid credentials');
   }
   return foundUser;
 });
+
 const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
     logout: (state) => {
-      state.currentUser = null;
+      state.currentUser = null; 
     },
   },
   extraReducers: (builder) => {
@@ -45,7 +49,7 @@ const loginSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.users.push(action.payload);
+        state.users.push(action.payload); 
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.status = 'failed';
@@ -56,7 +60,7 @@ const loginSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.currentUser = action.payload; // Set the logged-in user
+        state.currentUser = action.payload; 
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = 'failed';
@@ -64,5 +68,6 @@ const loginSlice = createSlice({
       });
   },
 });
+
 export const { logout } = loginSlice.actions;
 export default loginSlice.reducer;

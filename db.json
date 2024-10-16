@@ -14,6 +14,30 @@
       "id": "e414",
       "email": "deliwe@gmail.com",
       "password": "Deliwe123@"
+    },
+    {
+      "id": "266b",
+      "email": "margan@hotgirlsumar.com",
+      "password": "123456"
+    },
+    {
+      "id": "23f3",
+      "email": "uni@file.co.za",
+      "password": "123456"
+    }
+  ],
+  "lists": [
+    {
+      "id": "1",
+      "items": [
+        {
+          "id": "item1",
+          "name": "Apples",
+          "quantity": "4",
+          "category": "Groceries",
+          "note": "Buy organic if possible"
+        }
+      ]
     }
   ]
 }

@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
 const initialState = {
   users: [],
   status: 'idle',
   error: null,
 };
+
 // Async thunk for registering a user
 export const registerUser = createAsyncThunk('users/registerUser', async (newUser) => {
-  const response = await fetch('http://localhost:3000/users', {
+  const response = await fetch('http://localhost:5000/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -18,6 +20,7 @@ export const registerUser = createAsyncThunk('users/registerUser', async (newUse
   }
   return response.json();
 });
+
 const userSlice = createSlice({
   name: 'users',
   initialState,
@@ -29,7 +32,7 @@ const userSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.users.push(action.payload); // Add the new user to the users array
+        state.users.push(action.payload); 
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.status = 'failed';
@@ -37,11 +40,5 @@ const userSlice = createSlice({
       });
   },
 });
+
 export default userSlice.reducer;
-
-
-
-
-
-
-

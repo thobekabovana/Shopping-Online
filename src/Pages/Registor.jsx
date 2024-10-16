@@ -3,28 +3,45 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../App/RegisterSlice';
 
-
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); // New state for confirm password
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    // Clear any previous error messages
+    setError(null);
+  
+    // Validate password match
     if (password !== confirmPassword) {
-      window.alert("Passwords do not match!");
+      setError('Passwords do not match!');
       return;
     }
-    const newUser = { email, password };
+  
+    // Validate email format
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setError('Invalid email format!');
+      return;
+    }
+  
+    const newUser  = { email, password };
+  
     try {
-      await dispatch(registerUser(newUser)).unwrap();
-      window.alert('Registration successful! Please log in.');
-      navigate('/log-in');
+      // Attempt to register the user
+      await dispatch(registerUser (newUser )).unwrap();
+      
+      // Navigate to the login page upon successful registration
+      navigate('/login');
     } catch (error) {
+      // Handle registration failure
+      setError('Registration failed. Please try again.');
       console.error('Failed to register:', error);
-      window.alert('Registration failed. Please try again.');
     }
   };
 
@@ -33,61 +50,42 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <h2 className="text-xl font-bold mb-4">Register</h2>
 
-        <div className="mb-4">
-
-          <label className="block text-gray-700">Email:</label>
-          <div className="relative">
-
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-              
-            </span>
-
-            <input
-              type="email"
-              className="mt-1 block w-full pl-10 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-
-        </div>
-        <div className="mb-4">
-
-          <label className="block text-gray-700">Password:</label>
-          <div className="relative">
-
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-               
-            </span>
-
-            <input
-              type="password"
-              className="mt-1 block w-full pl-10 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+        <div className="m-4">
+          <input
+            type="email"
+            className="mt-1 block w-full pl-10 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="Enter your email address"
+          />
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700">Confirm Password:</label>
-          <div className="relative">
-
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
-            
-            </span>
-
-            <input
-              type="password"
-              className="mt-1 block w-full pl-10 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </div>
+          <input
+            type="password"
+            className="mt-1 block w-full pl-10 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            placeholder="Enter your password"
+          />
         </div>
+
+        <div className="mb-4">
+          <input
+            type="password"
+            className="mt-1 block w-full pl-10 p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+            placeholder="Confirm your password"
+          />
+        </div>
+
+        {error && (
+          <div className="mb-4 text-red-500">{error}</div>
+        )}
 
         <button
           type="submit"
@@ -95,23 +93,19 @@ const Register = () => {
         >
           Register
         </button>
-
       </form>
 
       <div className="mt-4 text-center">
         <p className="text-gray-600">
-          Already have an account?
-          <Link to="/log-in" className="text-blue-500 hover:underline"> Login here</Link>.
+          Already have an account?{' '}
+          <Link to="/login" className="text-blue-500 hover:underline">
+            Login here
+          </Link>
+          .
         </p>
       </div>
     </div>
   );
 };
+
 export default Register;
-
-
-
-
-
-
-
